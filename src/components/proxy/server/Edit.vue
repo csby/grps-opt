@@ -9,19 +9,19 @@
       <tr>
         <td class="required">名称:</td>
         <td>
-          <el-input v-model="editInfo.name" type="text" size="mini"/>
+          <el-input v-model="editInfo.name" placeholder="请输入端口转发名称，如：https" type="text" size="mini"/>
         </td>
       </tr>
       <tr>
         <td class="required">监听端口:</td>
         <td>
-          <el-input v-model="editInfo.port"  type="text" size="mini"/>
+          <el-input v-model="editInfo.port" placeholder="有效范围从1到65535" type="text" size="mini"/>
         </td>
       </tr>
       <tr>
         <td>监听地址:</td>
         <td>
-          <el-input v-model="editInfo.ip"  type="text" size="mini"/>
+          <el-input v-model="editInfo.ip" placeholder="空表示所有可用IP" type="text" size="mini"/>
         </td>
       </tr>
       <tr>
@@ -131,6 +131,13 @@ class Edit extends VueBase {
         this.editInfo.tls = this.info.tls
         this.editInfo.ip = this.info.ip
         this.editInfo.port = this.info.port
+      } else {
+        this.editInfo.id = ''
+        this.editInfo.name = ''
+        this.editInfo.disable = false
+        this.editInfo.tls = false
+        this.editInfo.ip = ''
+        this.editInfo.port = ''
       }
     } else {
       this.errSummary = ''

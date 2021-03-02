@@ -9,19 +9,19 @@
       <tr>
         <td>域名:</td>
         <td>
-          <el-input v-model="editInfo.target.domain" type="text" size="mini"/>
+          <el-input v-model="editInfo.target.domain" placeholder="空表示所有传入连接" type="text" size="mini"/>
         </td>
       </tr>
       <tr>
         <td class="required">目标地址:</td>
         <td>
-          <el-input v-model="editInfo.target.ip"  type="text" size="mini"/>
+          <el-input v-model="editInfo.target.ip" placeholder="IP地址或域名" type="text" size="mini"/>
         </td>
       </tr>
       <tr>
         <td class="required">目标端口:</td>
         <td>
-          <el-input v-model="editInfo.target.port"  type="text" size="mini"/>
+          <el-input v-model="editInfo.target.port" placeholder="有效范围从1到65535" type="text" size="mini"/>
         </td>
       </tr>
       <tr>
@@ -142,6 +142,13 @@ class Edit extends VueBase {
         this.editInfo.target.port = this.info.port
         this.editInfo.target.version = this.info.version
         this.editInfo.target.disable = this.info.disable
+      } else {
+        this.editInfo.target.id = ''
+        this.editInfo.target.domain = ''
+        this.editInfo.target.ip = ''
+        this.editInfo.target.port = ''
+        this.editInfo.target.version = 0
+        this.editInfo.target.disable = false
       }
     } else {
       this.errSummary = ''
