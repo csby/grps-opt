@@ -1,10 +1,10 @@
 const app = {
-  guid: '4D29EA5F748C4CFDA37434CE76A5E788',
-  title: '后台管理'
+  guid: '4162AEAC85F71A22E1366843F79785AE',
+  title: '反向代理服务'
 }
 
 const api = {
-  dev: 'http://192.168.123.201:8085',
+  dev: 'http://192.168.123.201:9618',
   pro: ''
 }
 

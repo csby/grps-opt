@@ -1,19 +1,18 @@
 <template>
-  <div class="dashboard">
-    <div class="fill">
-      <div>
-        <siteRoot />
-      </div>
-      <div>
-        <siteApps />
-      </div>
-    </div>
-    <div class="fix">
+  <el-container>
+    <el-main style="padding: 0px 10px 0px 0px;">
+      <proxyService />
+      <proxyConnection class="not-first" />
+    </el-main>
+    <el-aside width="420px">
       <div>
         <svcInfo />
       </div>
       <div class="not-first">
         <updInfo />
+      </div>
+      <div class="not-first">
+        <siteApps />
       </div>
       <div class="not-first">
         <monitorHost />
@@ -24,8 +23,8 @@
       <div class="not-first">
         <monitorNetworkListening />
       </div>
-    </div>
-  </div>
+    </el-aside>
+  </el-container>
 </template>
 
 <script>
@@ -38,6 +37,8 @@ import MonitorNetworkInterfaces from '@/components/monitor/network/Interface'
 import MonitorNetworkListening from '@/components/monitor/network/Listening'
 import SiteRoot from '@/components/site/root/Info'
 import SiteApps from '@/components/site/app/Apps'
+import ProxyService from '@/components/proxy/Service'
+import ProxyConnection from '@/components/proxy/Connection'
 
 @Component({
   components: {
@@ -47,7 +48,9 @@ import SiteApps from '@/components/site/app/Apps'
     monitorNetworkInterfaces: MonitorNetworkInterfaces,
     monitorNetworkListening: MonitorNetworkListening,
     siteRoot: SiteRoot,
-    siteApps: SiteApps
+    siteApps: SiteApps,
+    proxyService: ProxyService,
+    proxyConnection: ProxyConnection
   }
 })
 class Dashboard extends VueBase {
@@ -58,22 +61,7 @@ export default Dashboard
 </script>
 
 <style scoped>
-.dashboard {
-  display: flex;
-  align-items: flex-start;
-  padding-bottom: 5px;
-}
-
-.dashboard .fill {
-  flex: 1;
-}
-
-.dashboard .fix {
-  padding-left: 10px;
-  width: 420px;
-}
-
-.dashboard .not-first {
+.not-first {
   margin-top: 5px;
 }
 </style>

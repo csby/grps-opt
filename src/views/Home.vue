@@ -3,14 +3,9 @@
     <el-header height="auto" ref="top">
       <Header />
     </el-header>
-    <el-container>
-      <el-aside width="auto" :style="mainStyle">
-        <Navigation :min-height="mainHeight"/>
-      </el-aside>
-      <el-main :style="mainStyle">
-        <router-view />
-      </el-main>
-    </el-container>
+    <el-main :style="mainStyle">
+      <Dashboard />
+    </el-main>
   </el-container>
 </template>
 
@@ -19,12 +14,12 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import Header from '@/components/nav/Header'
-import Navigation from '@/components/nav/Catalog'
+import Dashboard from '@/views/authorized/Dashboard'
 
 @Component({
   components: {
     Header,
-    Navigation
+    Dashboard
   }
 })
 class Home extends Vue {
@@ -81,11 +76,7 @@ export default Home
   color: white;
 }
 
-.el-aside {
-  padding: 0;
-}
-
 .el-main {
-  padding: 0 0 0 10px;
+  padding: 0 0 0 1px;
 }
 </style>

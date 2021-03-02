@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
-import Dashboard from '@/views/authorized/Dashboard'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push (location) {
@@ -38,13 +37,7 @@ const routes = [
       } else {
         next('/login')
       }
-    },
-    children: [
-      {
-        path: '',
-        component: Dashboard
-      }
-    ]
+    }
   },
   {
     path: '*',

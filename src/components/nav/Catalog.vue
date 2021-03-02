@@ -13,9 +13,13 @@
              :collapse="menuCollapse"
              :router="true"
              :default-active="defaultActive">
-      <el-menu-item index="/">
+      <el-menu-item index="/dashboard">
         <i class="el-icon-menu"></i>
         <span slot="title">控制面板</span>
+      </el-menu-item>
+      <el-menu-item index="/">
+        <i class="el-icon-menu"></i>
+        <span slot="title">转发服务</span>
       </el-menu-item>
     </el-menu>
   </div>
@@ -33,7 +37,7 @@ import VueBase from '@/components/VueBase'
     },
     defaultActive: {
       type: String,
-      default: ''
+      default: '/'
     }
   }
 })

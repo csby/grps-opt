@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <img class="logo" alt="logo" src="../../assets/logo.png"  @click="to('/')"/>
-    <span class="title">服务管理平台{{frontVersion}}</span>
+    <span class="title">反向代理服务管理平台{{frontVersion}}</span>
     <LoginUser />
   </div>
 </template>

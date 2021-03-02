@@ -1,4 +1,5 @@
-# gwsf-opt
+# grps-opt
+The website Golang Reverse Proxy Server
 
 ## Project setup
 ```
