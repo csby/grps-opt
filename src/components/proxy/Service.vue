@@ -269,6 +269,15 @@ export default Service
 </script>
 
 <style scoped>
+.el-card /deep/ .el-card__header {
+  background-color: #f8f8f8;
+  padding: 3px;
+}
+
+el-collapse /deep/ .el-collapse-item__header {
+  background-color: #00f000;
+}
+
 .header {
   display: flex;
   align-items: center;

@@ -9,6 +9,12 @@
         <svcInfo />
       </div>
       <div class="not-first">
+        <monitorNetworkListening />
+      </div>
+      <div class="not-first">
+        <monitorNetworkInterfaces />
+      </div>
+      <div class="not-first">
         <updInfo />
       </div>
       <div class="not-first">
@@ -16,12 +22,6 @@
       </div>
       <div class="not-first">
         <monitorHost />
-      </div>
-      <div class="not-first">
-        <monitorNetworkInterfaces />
-      </div>
-      <div class="not-first">
-        <monitorNetworkListening />
       </div>
     </el-aside>
   </el-container>
