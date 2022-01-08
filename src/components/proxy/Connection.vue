@@ -9,6 +9,14 @@
       <div>
         <el-tooltip placement="top">
           <div slot="content">
+            <span>保持记录</span>
+          </div>
+          <el-checkbox class="icon-btn" v-model="hold" @change="onHoldChanged"/>
+        </el-tooltip>
+      </div>
+      <div>
+        <el-tooltip placement="top">
+          <div slot="content">
             <span>刷新</span>
           </div>
           <el-button class="icon-btn" type="text" icon="el-icon-refresh" :loading="isSearching" @click="doSearch"/>
@@ -39,6 +47,7 @@
                 element-loading-spinner="el-icon-loading"
                 size="small"
                 width="100%"
+                :row-class-name="tableRowClassName"
                 :max-height="360"
                 :data="items"
                 :border="true"
@@ -82,7 +91,25 @@ class Connection extends SocketBase {
     targetAddr: ''
   }
 
+  hold = false
   items = []
+
+  tableRowClassName ({ row, rowIndex }) {
+    if (row.status === 1) {
+      return 'error-row'
+    }
+
+    return ''
+  }
+
+  onHoldChanged (val) {
+    if (val) {
+      return
+    }
+
+    this.doSearch()
+  }
+
   onSearched (code, err, data) {
     this.isSearching = false
 
@@ -124,16 +151,27 @@ class Connection extends SocketBase {
         }
 
         if (valid) {
-          this.items.unshift(data)
+          if (this.hold) {
+            this.items.push(data)
+          } else {
+            this.items.unshift(data)
+          }
         }
       }
     } else if (id === this.$evt.id.wsReviseProxyConnectionShut) {
       if (data && this.items) {
         const count = this.items.length
         for (let index = 0; index < count; index++) {
-          if (data.id === this.items[index].id) {
-            this.items.splice(index, 1)
-            break
+          const item = this.items[index]
+          if (item) {
+            if (data.id === item.id) {
+              if (this.hold) {
+                item.status = 1
+              } else {
+                this.items.splice(index, 1)
+              }
+              break
+            }
           }
         }
       }
